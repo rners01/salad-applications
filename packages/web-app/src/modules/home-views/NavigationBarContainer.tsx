@@ -9,7 +9,6 @@ const mapStoreToProps = (store: RootStore): any => {
     store.auth.login()
   }
 
-  const goToAccount = () => store.routing.push('/account/summary')
   const bonus = store.bonuses.firstExpiringUnclaimedBonus
 
   const selectedAvatar = store.profile.profileAvatar
@@ -40,8 +39,6 @@ const mapStoreToProps = (store: RootStore): any => {
       />
     ) : undefined,
     isNative: false,
-    onClickAvatar: goToAccount,
-    onClickUsername: goToAccount,
     onClickViewAllBonuses: () => store.routing.push('/account/bonuses'),
     onInternalRoute: (path: string) => store.routing.push(path),
     onLogOut: store.auth.logout,
