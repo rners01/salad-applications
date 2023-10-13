@@ -1,5 +1,6 @@
 import type { TextFieldRefHandlers } from '@saladtechnologies/garden-components'
 import {
+  Button,
   Checkbox,
   FieldContainer,
   SvgIcon,
@@ -14,9 +15,10 @@ import { useEffect, useRef } from 'react'
 import type { WithStyles } from 'react-jss'
 import withStyles from 'react-jss'
 import MediaQuery from 'react-responsive'
-import { Head } from '../../../components'
 import type { SaladTheme } from '../../../SaladTheme'
+import { Head } from '../../../components'
 import { FormSteps } from '../../auth/AuthStore'
+import { useAuthService } from '../../auth/useAuthService'
 import LoginPageRewards from '../assets/login-screen-rewards.png'
 
 const styles = (theme: SaladTheme) => ({
@@ -112,7 +114,11 @@ const _LoginPage = ({
   classes,
 }: Props) => {
   const ref = useRef<TextFieldRefHandlers>(null)
-
+  const { login } = useAuthService()
+  const handleGoogleLogin = async () => {
+    const user = await login()
+    console.log(user)
+  }
   const handleSubmitEmail = (data: FormValues) => {
     if (data.input) {
       onSubmitEmail?.(data.input)
@@ -217,6 +223,7 @@ const _LoginPage = ({
                     used to sign up.
                   </Text>
                 </FieldContainer>
+                <Button label="Sign in with Google" onClick={handleGoogleLogin} />
               </>
             )}
             {currentStep === FormSteps.Code && (

@@ -3419,6 +3419,7 @@ __metadata:
     mobx-react-router: 4.1.0
     moment: 2.29.4
     npm-run-all: 4.1.5
+    oidc-client-ts: 2.3.0
     prettier: 2.8.8
     promise.allsettled: 1.0.7
     prop-types: 15.8.1
@@ -9079,6 +9080,13 @@ __metadata:
     randombytes: ^2.0.0
     randomfill: ^1.0.3
   checksum: c1609af82605474262f3eaa07daa0b2140026bd264ab316d4bf1170272570dbe02f0c49e29407fe0d3634f96c507c27a19a6765fb856fed854a625f9d15618e2
+  languageName: node
+  linkType: hard
+
+"crypto-js@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "crypto-js@npm:4.1.1"
+  checksum: b3747c12ee3a7632fab3b3e171ea50f78b182545f0714f6d3e7e2858385f0f4101a15f2517e033802ce9d12ba50a391575ff4638c9de3dd9b2c4bc47768d5425
   languageName: node
   linkType: hard
 
@@ -14839,6 +14847,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jwt-decode@npm:^3.1.2":
+  version: 3.1.2
+  resolution: "jwt-decode@npm:3.1.2"
+  checksum: 20a4b072d44ce3479f42d0d2c8d3dabeb353081ba4982e40b83a779f2459a70be26441be6c160bfc8c3c6eadf9f6380a036fbb06ac5406b5674e35d8c4205eeb
+  languageName: node
+  linkType: hard
+
 "keyv@npm:^4.0.0, keyv@npm:^4.5.3":
   version: 4.5.3
   resolution: "keyv@npm:4.5.3"
@@ -16521,6 +16536,16 @@ __metadata:
   version: 1.1.2
   resolution: "obuf@npm:1.1.2"
   checksum: 41a2ba310e7b6f6c3b905af82c275bf8854896e2e4c5752966d64cbcd2f599cfffd5932006bcf3b8b419dfdacebb3a3912d5d94e10f1d0acab59876c8757f27f
+  languageName: node
+  linkType: hard
+
+"oidc-client-ts@npm:2.3.0":
+  version: 2.3.0
+  resolution: "oidc-client-ts@npm:2.3.0"
+  dependencies:
+    crypto-js: ^4.1.1
+    jwt-decode: ^3.1.2
+  checksum: 74e20b8df748f901d67aba176f5f68bd8aa5ff7eed92dc92f34479dddc49e238dc722c757c5ab0f3365d170e3031343f650c789b51baa01062e8975c7580e15d
   languageName: node
   linkType: hard
 
