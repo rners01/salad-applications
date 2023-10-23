@@ -1,8 +1,11 @@
 import type { Location } from 'history'
 import type { RouteComponentProps } from 'react-router'
 import { Redirect, Route, Switch, withRouter } from 'react-router'
+import { NotFoundPage } from './NotFoundPage'
 import { ReferralOnboardingContainer, ReferralWelcomeContainer } from './modules/account-views/referral-views'
 import { LoginPageContainer } from './modules/auth-views'
+import { LoginCallback } from './modules/auth-views/components/LoginCallback'
+import { LogoutCallback } from './modules/auth-views/components/LogoutCallback'
 import { ReplaceBonusModalContainer } from './modules/bonus-views'
 import { EarningSummaryContainer } from './modules/earn-views/EarningSummaryContainer'
 import { RewardDetailsContainer, SelectTargetRewardContainer } from './modules/reward-views'
@@ -10,7 +13,6 @@ import { SaladPayOrderSummaryContainer } from './modules/salad-pay-views'
 import { SettingsContainer } from './modules/settings-views'
 import { StorefrontHomePage } from './modules/storefront-views/pages/StorefrontHomePage'
 import { VaultListContainer } from './modules/vault-views'
-import { NotFoundPage } from './NotFoundPage'
 
 const _Routes = ({ location }: RouteComponentProps) => {
   const currentLocation =
@@ -19,6 +21,8 @@ const _Routes = ({ location }: RouteComponentProps) => {
   return (
     <Switch location={currentLocation}>
       {/* Login Pages */}
+      <Route path="/login-callback" exact render={() => <LoginCallback />} />
+      <Route path="/logout-callback" exact render={() => <LogoutCallback />} />
       <Route path="/login" exact component={LoginPageContainer} />
 
       {/* Onboarding */}

@@ -20,6 +20,7 @@ import { Head } from '../../../components'
 import { FormSteps } from '../../auth/AuthStore'
 import { useAuthService } from '../../auth/useAuthService'
 import LoginPageRewards from '../assets/login-screen-rewards.png'
+import { getOIDCAuthReturnUrl } from './utils'
 
 const styles = (theme: SaladTheme) => ({
   container: {
@@ -114,11 +115,26 @@ const _LoginPage = ({
   classes,
 }: Props) => {
   const ref = useRef<TextFieldRefHandlers>(null)
-  const { login } = useAuthService()
-  const handleGoogleLogin = async () => {
-    const user = await login()
-    console.log(user)
+
+  const { signIn, signOut, getIsAuthenticated } = useAuthService()
+
+  const handleGoogleSignIn = async () => {
+    const returnUrl = getOIDCAuthReturnUrl()
+
+    await signIn(returnUrl)
   }
+  const handleGoogleSignOut = async () => {
+    const isAuthenticated = await getIsAuthenticated()
+
+    console.log('isAuthenticated; ', isAuthenticated)
+
+    if (!isAuthenticated) {
+      return
+    }
+
+    signOut()
+  }
+
   const handleSubmitEmail = (data: FormValues) => {
     if (data.input) {
       onSubmitEmail?.(data.input)
@@ -223,7 +239,9 @@ const _LoginPage = ({
                     used to sign up.
                   </Text>
                 </FieldContainer>
-                <Button label="Sign in with Google" onClick={handleGoogleLogin} />
+                {/* <div className="g_id_signin" onClick={handleGoogleSignIn} /> */}
+                <Button label="Sign in with Google" onClick={handleGoogleSignIn} />
+                <Button label="Sign out from Google" onClick={handleGoogleSignOut} />
               </>
             )}
             {currentStep === FormSteps.Code && (
