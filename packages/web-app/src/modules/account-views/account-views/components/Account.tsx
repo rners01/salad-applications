@@ -67,7 +67,7 @@ const styles = (theme: SaladTheme) => ({
   },
   connectAccountError: {
     paddingTop: 10,
-    color: theme.darkRed,
+    color: '#811417',
   },
 })
 
@@ -92,7 +92,7 @@ interface Props extends WithStyles<typeof styles> {
   isMinecraftUserNameSubmitSuccess: boolean
   payPalId?: string
   loadPayPalId: () => void
-  connectedGoogleAccountEmail: string
+  connectedGoogleAccountEmail?: string
   isLoadConnectedGoogleAccountEmailError: boolean
   loadGoogleAccountConnection: () => void
   disconnectPayPalId: () => void
@@ -275,7 +275,9 @@ class _Account extends Component<Props, State> {
                       />
                       {isLoadConnectedGoogleAccountEmailError && (
                         <div className={classes.connectAccountError}>
-                          <Text variant="baseS">Unable to fetch connected Google Account. Please refresh page.</Text>
+                          <Text variant="baseS">
+                            Unable to fetch connected Google Account. Please try to refresh the page.
+                          </Text>
                         </div>
                       )}
                       <div className={classes.connectAccountDescription}>
